@@ -4181,3 +4181,7 @@ con nam kỳ mất dạy
 đồ trung kỳ mất dạy
 thằng trung kỳ mất dạy
 con trung kỳ mất dạy
+trung kì
+bắc kì
+nam kì
+buồi
