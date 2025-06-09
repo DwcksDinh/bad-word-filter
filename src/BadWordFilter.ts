@@ -20,8 +20,7 @@ export class BadWordFilter {
       const filePath =
         typeof badWordsOrFilePath === 'string'
           ? badWordsOrFilePath
-          : path.resolve(process.cwd(), 'bad-words.txt');
-
+          : path.resolve(__dirname, 'bad-words.txt');
       try {
         const fileContent = await fs.readFile(filePath, 'utf-8');
         badWords = fileContent

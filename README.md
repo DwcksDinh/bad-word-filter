@@ -11,7 +11,7 @@ Thư viện TypeScript để phát hiện và lọc các từ ngữ xúc phạm 
 
 ## Cài đặt
 ```bash
-npm install @dwcks/bad-word-filter-vi-en@1.0.0
+npm install @dwcks/bad-word-filter-vi-en
 ```
 
 Đảm bảo file `bad-words.txt` tồn tại trong thư mục gốc của dự án hoặc cung cấp danh sách từ xấu trực tiếp.
@@ -19,7 +19,7 @@ npm install @dwcks/bad-word-filter-vi-en@1.0.0
 ## Sử dụng
 ### Trong Node.js
 ```typescript
-import { BadWordFilter } from 'bad-word-filter';
+import { BadWordFilter } from '@dwcks/bad-word-filter-vi-en';
 
 (async () => {
   const filter = await BadWordFilter.create(); // Đọc từ bad-words.txt
