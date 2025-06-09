@@ -32,7 +32,7 @@ import { BadWordFilter } from '@dwcks/bad-word-filter-vi-en';
 Tạo file `pages/api/filter.ts`:
 ```typescript
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { BadWordFilter } from 'bad-word-filter';
+import { BadWordFilter } from '@dwcks/bad-word-filter-vi-en';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
