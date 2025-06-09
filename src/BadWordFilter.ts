@@ -34,6 +34,10 @@ export class BadWordFilter {
       }
     }
 
+    // Chuẩn hóa từ xấu: chuyển về chữ thường
+    badWords = badWords.map((word) => word.toLowerCase());
+    // Sắp xếp từ dài đến ngắn để ưu tiên cụm từ
+    badWords.sort((a, b) => b.length - a.length);
     return new BadWordFilter(badWords);
   }
 
@@ -41,11 +45,24 @@ export class BadWordFilter {
     return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   }
 
+  private normalizeText(text: string): string {
+    // Chuyển về chữ thường và chuẩn hóa Unicode
+    let normalized = text.toLowerCase().normalize('NFKD');
+    // Loại bỏ dấu câu và ký tự đặc biệt, giữ lại chữ cái, số và ký tự tiếng Việt
+    normalized = normalized.replace(/[^a-z0-9\s\u00C0-\u1EF9]/g, '');
+    // Loại bỏ khoảng trắng thừa
+    normalized = normalized.replace(/\s+/g, ' ').trim();
+    return normalized;
+  }
+
   private buildRegex(): RegExp {
     if (!this.regex) {
-      const escapedWords = Array.from(this.badWords).map((word) =>
-        this.escapeRegex(word)
-      );
+      // Tạo regex cho từng từ, cho phép ký tự đặc biệt xen kẽ
+      const escapedWords = Array.from(this.badWords).map((word) => {
+        // Thêm \S* giữa các ký tự để khớp các biến thể như f***k
+        const chars = word.split('');
+        return chars.map((c) => this.escapeRegex(c) + '\\S*').join('');
+      });
       this.regex = new RegExp(`(${escapedWords.join('|')})`, 'gi');
     }
     return this.regex;
@@ -53,13 +70,12 @@ export class BadWordFilter {
 
   public hasBadWord(comment: string): boolean {
     if (!comment || typeof comment !== 'string') return false;
-    return this.buildRegex().test(comment);
+    const normalizedComment = this.normalizeText(comment);
+    return this.buildRegex().test(comment) || this.buildRegex().test(normalizedComment);
   }
 
   public filter(comment: string, mask: string = '*'): string {
     if (!comment || typeof comment !== 'string') return comment;
-    return comment.replace(this.buildRegex(), (match) =>
-      mask.repeat(match.length)
-    );
+    return comment.replace(this.buildRegex(), (match) => mask.repeat(match.length));
   }
 }

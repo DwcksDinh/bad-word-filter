@@ -1,5 +1,5 @@
 {
-  "name": "@dwcks/bad-word-filter",
+  "name": "@dwcksdinh/bad-word-filter",
   "version": "1.0.0",
   "description": "Thư viện lọc từ xấu tiếng Việt và tiếng Anh",
   "main": "dist/index.js",
@@ -16,7 +16,7 @@
     "vietnamese",
     "english"
   ],
-  "author": "Your Name",
+  "author": "DwcksDinh",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.0.0",
@@ -29,6 +29,6 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/your-username/bad-word-filter.git"
+    "url": "git+https://github.com/DwcksDinh/bad-word-filter.git"
   }
 }
