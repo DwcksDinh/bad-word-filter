@@ -11,7 +11,7 @@ Thư viện TypeScript để phát hiện và lọc các từ ngữ xúc phạm 
 
 ## Cài đặt
 ```bash
-npm install bad-word-filter
+npm install @dwcks/bad-word-filter-vi-en@1.0.0
 ```
 
 Đảm bảo file `bad-words.txt` tồn tại trong thư mục gốc của dự án hoặc cung cấp danh sách từ xấu trực tiếp.

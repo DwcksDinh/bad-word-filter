@@ -1,5 +1,5 @@
 {
-  "name": "@dwcksdinh/bad-word-filter",
+  "name": "@dwcks/bad-word-filter-vi-en",
   "version": "1.0.0",
   "description": "Thư viện lọc từ xấu tiếng Việt và tiếng Anh",
   "main": "dist/index.js",
@@ -30,5 +30,8 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DwcksDinh/bad-word-filter.git"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
