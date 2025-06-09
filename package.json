@@ -1,0 +1,34 @@
+{
+  "name": "@dwcks/bad-word-filter",
+  "version": "1.0.0",
+  "description": "Thư viện lọc từ xấu tiếng Việt và tiếng Anh",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "ts-node tests/test-bad-word-filter.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "bad-word-filter",
+    "profanity-filter",
+    "typescript",
+    "vietnamese",
+    "english"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.0.0"
+  },
+  "files": [
+    "dist",
+    "bad-words.txt"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-username/bad-word-filter.git"
+  }
+}

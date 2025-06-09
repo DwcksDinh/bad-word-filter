@@ -1,0 +1,1 @@
+export { BadWordFilter } from './BadWordFilter';
