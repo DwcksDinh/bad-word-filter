@@ -4194,4 +4194,4 @@ export const DEFAULT_BAD_WORDS: string[] = [
 ];
 
 export const BAD_WORDS_COUNT = 4187;
-export const BAD_WORDS_GENERATED_AT = '2025-07-09T20:13:22.538Z';
+export const BAD_WORDS_GENERATED_AT = '2025-07-09T20:17:57.569Z';
