@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bad Word Filter Browser Test</title>
+</head>
+<body>
+    <h1>Bad Word Filter Browser Test</h1>
+    
+    <div>
+        <label for="text-input">Enter text to filter:</label><br>
+        <textarea id="text-input" rows="4" cols="50" placeholder="Enter some text...">This is a test with fuck and shit words.</textarea><br><br>
+        
+        <button onclick="filterText()">Filter Text</button><br><br>
+        
+        <div id="results"></div>
+    </div>
+
+    <!-- Load the UMD build -->
+    <script src="./dist/browser/bad-word-filter.min.js"></script>
+    
+    <script>
+        let filter;
+        
+        // Initialize the filter
+        async function initFilter() {
+            try {
+                // Use default bad words (inlined in browser build)
+                filter = new BadWordFilter.BrowserBadWordFilter();
+                await filter.loadBadWords();
+                console.log('✅ Filter initialized successfully');
+            } catch (error) {
+                console.error('❌ Failed to initialize filter:', error);
+            }
+        }
+        
+        async function filterText() {
+            if (!filter) {
+                document.getElementById('results').innerHTML = 
+                    '<p style="color: red;">Filter not initialized!</p>';
+                return;
+            }
+            
+            const input = document.getElementById('text-input').value;
+            const analysis = filter.analyze(input);
+            
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = `
+                <h3>Results:</h3>
+                <p><strong>Original:</strong> ${input}</p>
+                <p><strong>Filtered:</strong> ${analysis.filteredText}</p>
+                <p><strong>Has Bad Words:</strong> ${analysis.hasBadWords}</p>
+                <p><strong>Words Found:</strong> [${analysis.wordsFound.join(', ')}]</p>
+            `;
+        }
+        
+        // Initialize when page loads
+        initFilter();
+    </script>
+</body>
+</html>

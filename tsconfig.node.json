@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "target": "ES2015",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "declaration": true,
+    "outDir": "dist/node",
+    "types": ["node"]
+  },
+  "include": ["src/**/*"],
+  "exclude": ["src/browser.ts", "src/browser-words.ts", "tests/**/*", "scripts/**/*"]
+}

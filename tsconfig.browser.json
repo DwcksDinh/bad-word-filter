@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "target": "ES2015",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "declaration": true,
+    "outDir": "dist/browser",
+    "lib": ["ES2015", "DOM"]
+  },
+  "include": ["src/**/*"],
+  "exclude": ["src/node.ts", "src/BadWordFilter.ts", "tests/**/*", "scripts/**/*"]
+}
